@@ -57,7 +57,7 @@ export default async function HomePage() {
   const controlValue = metrics.controlScore > 0 ? `${metrics.controlScore}/5` : null
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-5 md:space-y-8 pt-16 md:pt-0">
 
       {/* ── Header ── */}
       <div className="flex items-end justify-between">
@@ -89,7 +89,7 @@ export default async function HomePage() {
 
       {/* ── Hero métrica ── */}
       <div
-        className="p-8 border flex items-center justify-between gap-8"
+        className="p-5 md:p-8 border flex flex-col md:flex-row md:items-center md:justify-between gap-6 md:gap-8"
         style={{ borderColor: 'rgba(200,255,0,0.15)', background: 'rgba(200,255,0,0.02)' }}
       >
         {/* Horas — hero */}
@@ -120,10 +120,10 @@ export default async function HomePage() {
           )}
         </div>
 
-        <div className="h-16 w-px flex-shrink-0" style={{ background: 'rgba(255,255,255,0.06)' }} />
+        <div className="hidden md:block h-16 w-px flex-shrink-0" style={{ background: 'rgba(255,255,255,0.06)' }} />
 
         {/* 3 métricas secundarias */}
-        <div className="grid grid-cols-3 gap-10 flex-1">
+        <div className="grid grid-cols-3 gap-4 md:gap-10 md:flex-1">
           {[
             {
               label: 'Reducción operativa',
@@ -166,10 +166,10 @@ export default async function HomePage() {
 
       {/* ── Foco + Insight ── */}
       {/* Foco ocupa 7/12, insight 5/12 */}
-      <div className="grid grid-cols-12 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
 
         {/* Tu foco ahora — protagonista */}
-        <div className="col-span-7">
+        <div className="col-span-1 md:col-span-7">
           {todayAction ? (
             <div
               className="h-full p-7 border flex flex-col gap-4"
@@ -235,7 +235,7 @@ export default async function HomePage() {
         </div>
 
         {/* Insight — subordinado */}
-        <div className="col-span-5">
+        <div className="col-span-1 md:col-span-5">
           <div
             className="h-full p-6 border-l-2 border flex flex-col gap-3"
             style={{

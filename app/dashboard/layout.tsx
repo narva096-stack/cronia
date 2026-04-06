@@ -24,7 +24,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
     <div className="relative min-h-screen bg-black">
       <GridBackground />
       <Sidebar clientName={clientName} />
-      <main className="relative z-10 ml-56 min-h-screen px-12 py-10" style={{ maxWidth: 'calc(100% - 224px)' }}>
+      <main className="relative z-10 ml-0 md:ml-56 min-h-screen px-4 py-6 md:px-12 md:py-10 pb-24 md:pb-10" style={{ maxWidth: 'calc(100%)' }}>
         {children}
       </main>
     </div>

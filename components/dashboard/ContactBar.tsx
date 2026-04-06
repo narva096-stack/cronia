@@ -40,7 +40,7 @@ export default function ContactBar({ clientName }: { clientName: string }) {
       >
         Accesos directos
       </p>
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         {actions.map(action => (
           <a
             key={action.label}
