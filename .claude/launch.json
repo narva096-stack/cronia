@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "cronia",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": ["-c", "cd /Users/jorgenarvaez/cronia && /usr/local/bin/node node_modules/.bin/next dev"],
+      "port": 3000
+    }
+  ]
+}
