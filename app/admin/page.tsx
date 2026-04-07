@@ -45,6 +45,7 @@ export default async function AdminPage() {
           </p>
         </div>
       ) : (
+        <>
         {/* Desktop tabla */}
         <div className="hidden md:block border" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
           <div
@@ -113,6 +114,7 @@ export default async function AdminPage() {
             </Link>
           ))}
         </div>
+        </>
       )}
     </div>
   )
