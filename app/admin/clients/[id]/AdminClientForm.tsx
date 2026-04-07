@@ -37,38 +37,40 @@ export default function AdminClientForm(props: Props) {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="flex items-start justify-between">
-        <div>
-          <button
-            onClick={() => router.push('/admin')}
-            className="text-xs mb-3 block transition-colors hover:text-[#F5F5F5]"
-            style={{ color: 'rgba(245,245,245,0.4)' }}
-          >
-            ← Todos los clientes
-          </button>
-          <h1 className="text-3xl font-black tracking-wide text-[#F5F5F5] uppercase">
-            {client.name}
-          </h1>
-          <p className="text-sm mt-1" style={{ color: 'rgba(245,245,245,0.4)' }}>
-            {client.email} {client.plan_price ? `· $${client.plan_price}/mes` : ''}
-          </p>
-        </div>
-        <div className="flex items-center gap-4">
-          <span
-            className="text-xs font-semibold tracking-[0.1em] uppercase px-3 py-1.5"
-            style={{
-              background: client.active ? 'rgba(200,255,0,0.1)' : 'rgba(255,255,255,0.05)',
-              color: client.active ? '#C8FF00' : 'rgba(245,245,245,0.4)',
-            }}
-          >
-            {client.active ? 'Activo' : 'Inactivo'}
-          </span>
-          <DeleteClientButton clientId={client.id} clientName={client.name} />
+      <div>
+        <button
+          onClick={() => router.push('/admin')}
+          className="text-xs mb-3 block transition-colors hover:text-[#F5F5F5]"
+          style={{ color: 'rgba(245,245,245,0.4)' }}
+        >
+          ← Todos los clientes
+        </button>
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <h1 className="text-2xl md:text-3xl font-black tracking-wide text-[#F5F5F5] uppercase">
+              {client.name}
+            </h1>
+            <p className="text-sm mt-1" style={{ color: 'rgba(245,245,245,0.4)' }}>
+              {client.email} {client.plan_price ? `· $${client.plan_price}/mes` : ''}
+            </p>
+          </div>
+          <div className="flex flex-col md:flex-row items-end md:items-center gap-2 md:gap-4 flex-shrink-0">
+            <span
+              className="text-xs font-semibold tracking-[0.1em] uppercase px-3 py-1.5"
+              style={{
+                background: client.active ? 'rgba(200,255,0,0.1)' : 'rgba(255,255,255,0.05)',
+                color: client.active ? '#C8FF00' : 'rgba(245,245,245,0.4)',
+              }}
+            >
+              {client.active ? 'Activo' : 'Inactivo'}
+            </span>
+            <DeleteClientButton clientId={client.id} clientName={client.name} />
+          </div>
         </div>
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-0 border-b" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
+      <div className="flex gap-0 border-b overflow-x-auto" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
         {tabs.map(t => (
           <button
             key={t.key}
@@ -136,12 +138,12 @@ function OverviewTab({ client, metrics, checkIns }: {
 }) {
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
         <Stat label="Horas recuperadas" value={`${metrics.hoursRecovered.toFixed(1)} hrs`} accent />
         <Stat label="Reducción operativa" value={`${metrics.operationalReduction}%`} />
         <Stat label="Score de control" value={metrics.controlScore > 0 ? `${metrics.controlScore}/5` : '—'} />
       </div>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 gap-3 md:gap-4">
         <Stat label="Check-ins completados" value={String(metrics.totalCheckIns)} />
         <Stat label="Baseline total semanal" value={`${metrics.baselineTotal} hrs`} />
       </div>
