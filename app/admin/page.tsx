@@ -45,8 +45,8 @@ export default async function AdminPage() {
           </p>
         </div>
       ) : (
-        <div className="border" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
-          {/* Header de tabla */}
+        {/* Desktop tabla */}
+        <div className="hidden md:block border" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
           <div
             className="grid grid-cols-5 px-5 py-3 border-b"
             style={{ borderColor: 'rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.03)' }}
@@ -58,7 +58,6 @@ export default async function AdminPage() {
               </p>
             ))}
           </div>
-
           {clients.map((client, idx) => (
             <div
               key={client.id}
@@ -71,24 +70,47 @@ export default async function AdminPage() {
                 {client.plan_price ? `$${client.plan_price}/mes` : '—'}
               </p>
               <div>
-                <span
-                  className="text-xs font-semibold tracking-[0.1em] uppercase px-2 py-1"
+                <span className="text-xs font-semibold tracking-[0.1em] uppercase px-2 py-1"
                   style={{
                     background: client.active ? 'rgba(200,255,0,0.1)' : 'rgba(255,255,255,0.05)',
                     color: client.active ? '#C8FF00' : 'rgba(245,245,245,0.4)',
-                  }}
-                >
+                  }}>
                   {client.active ? 'Activo' : 'Inactivo'}
                 </span>
               </div>
-              <Link
-                href={`/admin/clients/${client.id}`}
+              <Link href={`/admin/clients/${client.id}`}
                 className="text-xs font-semibold tracking-[0.1em] uppercase hover:text-[#C8FF00] transition-colors"
-                style={{ color: 'rgba(245,245,245,0.5)' }}
-              >
+                style={{ color: 'rgba(245,245,245,0.5)' }}>
                 Gestionar →
               </Link>
             </div>
+          ))}
+        </div>
+
+        {/* Mobile cards */}
+        <div className="md:hidden space-y-3">
+          {clients.map(client => (
+            <Link key={client.id} href={`/admin/clients/${client.id}`}
+              className="block p-4 border"
+              style={{ borderColor: 'rgba(255,255,255,0.08)', background: 'rgba(255,255,255,0.02)' }}>
+              <div className="flex items-start justify-between gap-3 mb-2">
+                <p className="text-sm font-semibold text-[#F5F5F5]">{client.name}</p>
+                <span className="text-xs font-semibold tracking-[0.1em] uppercase px-2 py-1 flex-shrink-0"
+                  style={{
+                    background: client.active ? 'rgba(200,255,0,0.1)' : 'rgba(255,255,255,0.05)',
+                    color: client.active ? '#C8FF00' : 'rgba(245,245,245,0.4)',
+                  }}>
+                  {client.active ? 'Activo' : 'Inactivo'}
+                </span>
+              </div>
+              <p className="text-xs mb-1" style={{ color: 'rgba(245,245,245,0.4)' }}>{client.email}</p>
+              <div className="flex items-center justify-between mt-3">
+                <p className="text-xs" style={{ color: 'rgba(245,245,245,0.4)' }}>
+                  {client.plan_price ? `$${client.plan_price}/mes` : '—'}
+                </p>
+                <span className="text-xs font-semibold" style={{ color: '#C8FF00' }}>Gestionar →</span>
+              </div>
+            </Link>
           ))}
         </div>
       )}

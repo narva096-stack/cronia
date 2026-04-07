@@ -19,10 +19,10 @@ export default async function AdminLayout({ children }: { children: React.ReactN
       <div className="relative z-10">
         {/* Admin topbar */}
         <header
-          className="flex items-center justify-between px-8 py-5 border-b"
+          className="flex items-center justify-between px-4 md:px-8 py-4 md:py-5 border-b"
           style={{ borderColor: 'rgba(255,255,255,0.06)' }}
         >
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-3 md:gap-8">
             <span className="text-base font-black tracking-[0.25em] text-[#F5F5F5] uppercase">
               CRONIA
             </span>
@@ -33,19 +33,19 @@ export default async function AdminLayout({ children }: { children: React.ReactN
               Admin
             </span>
           </div>
-          <nav className="flex items-center gap-6">
+          <nav className="flex items-center gap-3 md:gap-6">
             <Link href="/admin"
               className="text-xs font-semibold tracking-[0.1em] uppercase transition-colors hover:text-[#C8FF00]"
               style={{ color: 'rgba(245,245,245,0.5)' }}>
               Clientes
             </Link>
             <Link href="/admin/playbooks"
-              className="text-xs font-semibold tracking-[0.1em] uppercase transition-colors hover:text-[#C8FF00]"
+              className="hidden md:block text-xs font-semibold tracking-[0.1em] uppercase transition-colors hover:text-[#C8FF00]"
               style={{ color: 'rgba(245,245,245,0.5)' }}>
               Playbooks
             </Link>
             <Link href="/admin/invitations"
-              className="text-xs font-semibold tracking-[0.1em] uppercase transition-colors hover:text-[#C8FF00]"
+              className="hidden md:block text-xs font-semibold tracking-[0.1em] uppercase transition-colors hover:text-[#C8FF00]"
               style={{ color: 'rgba(245,245,245,0.5)' }}>
               Invitaciones
             </Link>
@@ -57,7 +57,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
           </nav>
         </header>
 
-        <main className="px-8 py-8 max-w-6xl mx-auto">
+        <main className="px-4 md:px-8 py-6 md:py-8 max-w-6xl mx-auto">
           {children}
         </main>
       </div>
