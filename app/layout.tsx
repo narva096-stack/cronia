@@ -23,10 +23,8 @@ const META_PIXEL_ID = '1541888530230005'
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={montserrat.variable}>
-      <body>
-        {children}
-
-        {/* Meta Pixel */}
+      <head>
+        {/* Meta Pixel — server-rendered, executes after page becomes interactive */}
         <Script
           id="meta-pixel"
           strategy="afterInteractive"
@@ -45,6 +43,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             `,
           }}
         />
+      </head>
+      <body>
+        {children}
         <noscript>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
